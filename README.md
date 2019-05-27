@@ -1,1 +1,1 @@
-#### uFaculties project ####
+#### uFaculties project
