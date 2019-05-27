@@ -81,5 +81,7 @@ $ flask run
 
 # TODO list:
 **1. Create a TreeView for ```researchfields``` with create, delete, update operations on the tree. Update the database after edit the tree** (NOT DONE YET)
+
+
 **2. Create an unique user profile for every teacher. Define routes and rebuild the database models to fit in the user profile properties (Build with RESTFul API)** (NOT DONE YET)
 
