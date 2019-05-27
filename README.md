@@ -1,32 +1,30 @@
-# uFaculties
-
-A web application for information searching.
+# uFaculties - A web application for information searching.
 
 ### How to build
 
-Clone this repo
+**Clone this repo
 ```
 $ git clone https://github.com/mathiznogoud/uFaculties2019.git
 ```
 
 
-Need to install virtualenv
+**Need to install virtualenv
 
 ```
 $sudo apt-get install virtualenv
 ```
 
-Then navigate to the project directory, create a new virtual environment
+**Then navigate to the project directory, create a new virtual environment
 ```
 $virtualenv -p python3 env
 ```
 
-Activate virtual environment
+**Activate virtual environment
 ```
 $ source env/bin/activate
 ```
 
-Install plugins, dependencies to build the project
+**Install plugins, dependencies to build the project
 ```
 $ pip install -r requirements.txt
 ```
@@ -35,7 +33,7 @@ $ pip install -r requirements.txt
 
 ## Database
 
-install MySQL database on ubuntu, MySQL Workbench for database management
+Install MySQL database, MySQL Workbench for database management
 ```
 https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-ubuntu-18-04
 ```
@@ -55,7 +53,7 @@ mysql> GRANT ALL PRIVILEGES ON uFaculties_db . * TO 'your_dbusername'@'your_pass
 Query OK, 0 rows affected (0.00 sec)
 ```
 
-Config your database in instance/config.py
+Config your database in **_instance/config.py_**
 ```
 SQLALCHEMY_DATABASE_URI = 'mysql://your_dbusername:your_password@localhost/uFaculties_db'
 
@@ -64,7 +62,7 @@ SQLALCHEMY_DATABASE_URI = 'mysql://your_dbusername:your_password@localhost/uFacu
 
 
 # Run the project
-Navigate to the directories that have **run.py**
+Navigate to the directory that have **_run.py_**
 Activate virtualenv
 ```
 $ source env/bin/activate
