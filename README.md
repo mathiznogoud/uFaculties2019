@@ -11,12 +11,12 @@ $ git clone https://github.com/mathiznogoud/uFaculties2019.git
 **Need to install virtualenv**
 
 ```
-$sudo apt-get install virtualenv
+$ sudo apt-get install virtualenv
 ```
 
 **Then navigate to the project directory, create a new virtual environment**
 ```
-$virtualenv -p python3 env
+$ virtualenv -p python3 env
 ```
 
 **Activate virtual environment**
