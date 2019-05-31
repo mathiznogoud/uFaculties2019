@@ -49,7 +49,7 @@ Query OK, 0 rows affected (0.00 sec)
 mysql> CREATE DATABASE uFaculties_db;
 Query OK, 1 row affected (0.00 sec)
 
-mysql> GRANT ALL PRIVILEGES ON uFaculties_db . * TO 'your_dbusername'@'your_password';
+mysql> GRANT ALL PRIVILEGES ON uFaculties_db . * TO 'your_dbusername'@'localhost';
 Query OK, 0 rows affected (0.00 sec)
 ```
 
