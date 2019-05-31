@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% block body %}
+<div class="content-section">
+    <div class="outer">
+      <div class="middle">
+       <div class="inner">
+          <div class="container">
+
+    <form action="/" method="post">
+        <label>ID</label><br/>
+        <input type="text" id="Id" /><br/>
+        <label>Title</label><br/>
+        <input type="text" id="Title" /><br/>
+        <label>Parent ID</label><br/>
+        <input type="text" id="ParentId" /><br/>
+        <button>Register</button>
+    </form>
+    <br/><br/>
+
+    
+    <!-- 2) treeview wrapper -->
+    <ul class="treeview"></ul>
+
+    <br/>
+    <button id="getSelectedIds">Get selected ids</button> &nbsp;&nbsp;
+    <button id="detSelectedLeafIds">Get selected leaf ids</button> &nbsp;&nbsp;
+    <button id="clear">Clear treeview</button> &nbsp;&nbsp;
+
+
+
+<!-- 3) jQuery -->
+<!--<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>-->
+
+<!-- 4) plugin -->
+<script src="{{ url_for( 'static', filename='TreeViewOp.js')}}"></script>
+    <script>
+        // you can get this from server (via AJAX)
+        var treeViewData = {{ answer | tojson | safe}};
+
+        var selectedItemIds = [7,8,9];
+        // set settings
+        var artaraxTreeView = $.artaraxTreeView({
+            jsonData: treeViewData,
+            selectedIds: selectedItemIds, // just use on update mode (when you run tree view by 'loadTreeViewOnUpdate()' function)
+            updateCallBack: onUpdate,
+            deleteCallBack: onDelete
+          // ,isDisplayChildren: false // use this to collapse all nodes on load (it works just on insert mode, when you run tree view by 'loadTreeViewOnInsert()' function)
+        });
+        // load treeview
+         artaraxTreeView.loadTreeViewOnInsert(1); // 1 is the root id
+        // use above line on insert mode, for update mode use below line 
+        
+        // artaraxTreeView.loadTreeViewOnUpdate(1);
+        
+        $("#getSelectedIds").click(function(){
+            var selectedIds = artaraxTreeView.getSelectedIds();
+            alert(JSON.stringify(selectedIds));
+        });
+        $("#detSelectedLeafIds").click(function(){
+            var selectedLeafIds = artaraxTreeView.getSelectedLeafIds();
+            alert(JSON.stringify(selectedLeafIds));
+        });
+         $("#clear").click(function(){
+            var selectedLeafIds = artaraxTreeView.unCheckedAll();
+        });
+        function onUpdate(obj)
+        {
+            // you can use obj props to fill a form
+            $("#Id").val(obj.Id);
+            $("#Title").val(obj.Title);
+            $("#ParentId").val(obj.ParentId);
+        }
+        function onDelete(obj)
+        {
+            // call server API to delete item
+            alert('onDelete executed >> selected object is >>' + JSON.stringify(obj));
+        }
+    </script>
+</div>
+</div>
+</div>
+</div>
+</div>
+{% endblock %}

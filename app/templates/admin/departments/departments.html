@@ -1,5 +1,6 @@
 {% import "bootstrap/utils.html" as utils %}
 {% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
 {% block title %}Departments{% endblock %}
 {% block body %}
 <div class="content-section">
@@ -17,20 +18,28 @@
               <thead>
                 <tr>
                   <th width="15%"> Name </th>
-                  <th width="40%"> Description </th>
-                  <th width="15%"> User Count </th>
-                  <th width="15%"> Edit </th>
-                  <th width="15%"> Delete </th>
+                  <th width="5%"> Code </th>
+                  <th width="10%">Department type</th>
+                  <th width="10%">Address</th>
+                  <th width="10%">Phone</th>
+                  <th width="10%">Website</th>
+                  <th width="5%"> User Count </th>
+                  <th width="5%"> Edit </th>
+                  <th width="5%"> Delete </th>
                 </tr>
               </thead>
               <tbody>
               {% for department in departments %}
                 <tr>
                   <td> {{ department.name }} </td>
-                  <td> {{ department.description }} </td>
+                  <td> {{ department.code }} </td>
+                  <td> {{ department.depType }} </td>
+                  <td> {{ department.address }} </td>
+                  <td> {{ department.phone }} </td>
+                  <td> {{ department.website }} </td>
                   <td>
-                    {% if department.employees %}
-                      {{ department.employees.count() }}
+                    {% if department.user %}
+                      {{ department.user.count() }}
                     {% else %}
                       0
                     {% endif %}
@@ -47,20 +56,24 @@
                   </td>
                 </tr>
               {% endfor %}
+            <div style="margin-right: 1300px;">
+              {{ wtf.quick_form(form) }}</div>
+               <div style="margin-left: 1300px">
+                <a href="{{ url_for('admin.add_department') }}" class="btn btn-default btn-lg" style="margin-bottom: 30px;">
+                  <i class="fa fa-plus"></i>
+                  Add Department
+                </a>
+              </div>
               </tbody>
             </table>
           </div>
           <div style="text-align: center">
         {% else %}
-          <div style="text-align: center">
+         <div style="text-align: center">
             <h3> No departments have been added. </h3>
             <hr class="intro-divider">
         {% endif %}
-          <a href="{{ url_for('admin.add_department') }}" class="btn btn-default btn-lg">
-            <i class="fa fa-plus"></i>
-            Add Department
-          </a>
-        </div>
+         </div>
       </div>
     </div>
   </div>

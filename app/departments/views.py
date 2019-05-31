@@ -8,5 +8,4 @@ class DepartmentForm(FlaskForm):
     Form for admin to add or edit a department
     """
     name = StringField('Name', validators=[DataRequired()])
-    description = StringField('Description', validators=[DataRequired()])
     submit = SubmitField('Submit')
